@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./game.css" />
+    <title>Adventure Game</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="statusbar"></div>
+      <div id="location"></div>
+      <div id="text"></div>
+      <div id="results"></div>
+      <div id="option-buttons">
+        <button id="btn1"></button>
+        <button id="btn2"></button>
+      </div>
+    </div>
+    <script>
+      const game = {
+        player: {
+          name: "",
+          health: 50,
+          strength: 50,
+          inventory: [],
+          location: "",
+        },
+        locations: ["Forest", "Cave", "Meadow", "Town"],
+        enemies: {
+          goblin: { name: "Goblin", health: 30, strength: 20 },
+          monster: { name: "Monster", health: 50, strength: 5 },
+          skeleton: { name: "Skeleton", health: 10, strength: 10 },
+          vampire: { name: "Vampire", health: 40, strength: 10 },
+        },
+        inventory: [
+          { name: "sword", strength: 10, taken: false },
+          { name: "shield", strength: 5, taken: false },
+          { name: "axe", strength: 15, taken: false },
+          { name: "armor", strength: 20, taken: false },
+        ],
+        gameState: "",
+      };
+
+      const getRandomNumber = () => Math.floor(Math.random() * 4);
+
+      function toggleButton1(show) {
+        const button = document.getElementById("btn1");
+        button.style.display = show ? "block" : "none";
+      }
+
+      function toggleButton2(show) {
+        const button = document.getElementById("btn2");
+        button.style.display = show ? "block" : "none";
+      }
+
+      function statusBar() {
+        const enemyCount = Object.keys(game.enemies).length;
+        document.getElementById(
+          "statusbar"
+        ).innerHTML = `Name: ${game.player.name} | Health: ${game.player.health} | Strength: ${game.player.strength} | Inventory count: ${game.player.inventory.length} | Enemies count: ${enemyCount}`;
+      }
+
+      function checkWin() {
+        if (Object.keys(game.enemies).length === 0) {
+          document.getElementById("results").innerHTML = "You win game!";
+          toggleButton1(false);
+          toggleButton2(false);
+        }
+      }
+
+      function startGame() {
+        game.player.name = prompt("Enter player name:");
+        document.getElementById(
+          "text"
+        ).innerHTML = `Start playing, ${game.player.name}!`;
+        game.gameState = "playing";
+        document.getElementById("btn1").innerHTML = "Let's go!";
+        document.getElementById("btn2").innerHTML = "Exit";
+        document.getElementById("btn1").addEventListener("click", explore);
+      }
+
+      function meetEnemy() {
+        if (game.gameState !== "playing") return;
+        document.getElementById("results").innerHTML = "";
+        console.log("test");
+        const enemyKeys = Object.keys(game.enemies);
+        const randomEnemyKey =
+          enemyKeys[Math.floor(Math.random() * enemyKeys.length)];
+        const currentEnemy = game.enemies[randomEnemyKey];
+        document.getElementById(
+          "text"
+        ).innerHTML = `You meet a ${currentEnemy.name}.`;
+        document.getElementById("btn1").innerHTML = "Fight";
+        document.getElementById("btn2").innerHTML = "Run";
+
+        document.getElementById("btn1").onclick = () => {
+          fight(currentEnemy);
+        };
+        document.getElementById("btn2").onclick = () => {
+          document.getElementById("text").innerHTML = "You ran away!";
+          explore();
+        };
+      }
+
+      function fight(enemy) {
+        if (game.gameState !== "playing") return;
+        console.log(enemy.name);
+        const enemyKey = enemy.name.toLowerCase();
+        console.log(enemyKey);
+        if (!game.enemies[enemyKey]) {
+          console.error("Enemy does not exist");
+          return;
+        }
+        document.getElementById("location").innerHTML = "";
+        document.getElementById("text").innerHTML = "";
+
+        game.player.health -= enemy.strength;
+        game.enemies[enemyKey].health -= game.player.strength;
+        statusBar();
+
+        // Check if player is dead
+        if (game.player.health <= 0) {
+          game.gameState = "end";
+          document.getElementById("results").innerHTML = "You lose!";
+          toggleButton1(false);
+          toggleButton2(false);
+          return;
+        }
+
+        // Check if enemy is dead
+        if (game.enemies[enemyKey].health <= 0) {
+          delete game.enemies[enemyKey];
+          statusBar();
+          document.getElementById("btn1").innerHTML = "Next";
+          document.getElementById("btn1").addEventListener("click", explore);
+          toggleButton2(false);
+          document.getElementById("results").innerHTML = "You win the fight!";
+        } else {
+          document.getElementById(
+            "results"
+          ).innerHTML = `Enemy ${enemy.name} has ${game.enemies[enemyKey].health} health left.`;
+        }
+
+        checkWin();
+
+        document.getElementById("btn1").innerHTML = "Next";
+        document.getElementById("btn1").onclick = () => {
+          explore();
+        };
+      }
+
+      function findInventory() {
+        if (game.gameState !== "playing") return;
+        for (let i = 0; i < game.inventory.length; i++) {
+          if (!game.inventory[i].taken) {
+            game.inventory[i].taken = true;
+            game.player.inventory.push(game.inventory[i]);
+            document.getElementById(
+              "text"
+            ).innerHTML = `You find a ${game.inventory[i].name}.`;
+            game.player.strength += game.inventory[i].strength;
+            document.getElementById(
+              "results"
+            ).innerHTML = `Now your strength is ${game.player.strength}.`;
+            document.getElementById("btn1").innerHTML = "Next";
+            document.getElementById("btn1").addEventListener("click", explore);
+            statusBar();
+            break;
+          }
+        }
+      }
+
+      function explore() {
+        if (game.gameState !== "playing") return;
+
+        statusBar();
+        checkWin();
+
+        toggleButton1(true);
+        let randomNumber = getRandomNumber();
+        game.player.location = game.locations[randomNumber];
+        document.getElementById(
+          "location"
+        ).innerHTML = `You are going to the ${game.player.location}.`;
+
+        randomNumber = getRandomNumber();
+        switch (randomNumber) {
+          case 0:
+            document.getElementById("text").innerHTML =
+              "You find nothing special.";
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("btn1").innerHTML = "Next";
+            document.getElementById("btn1").addEventListener("click", explore);
+            toggleButton2(false);
+            break;
+          case 1:
+            document.getElementById("text").innerHTML =
+              "You see a beautiful sight.";
+            document.getElementById("results").innerHTML = "";
+            document.getElementById("btn1").innerHTML = "Next";
+            document.getElementById("btn1").addEventListener("click", explore);
+            toggleButton2(false);
+            break;
+          case 2:
+            toggleButton2(false);
+            findInventory();
+            break;
+          case 3:
+            toggleButton2(true);
+            meetEnemy();
+            break;
+        }
+      }
+
+      startGame();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+.footer{
+    background-color: white;
+    border: $borderfortest;
+    align-items: center;
+    padding: 10px 20px; 
+    text-align: center;
+}
+
+.footer p{
+    font-size: 0.8rem;
+    text-indent: 0;
+}
+
+@media (min-width: $breakpoint-mobile) {
+    .footer p{
+        font-size: 0.9rem;
+           }
+  }

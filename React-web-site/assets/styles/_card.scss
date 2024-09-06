@@ -1,0 +1,48 @@
+.card {
+  max-width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  border: $borderfortest;
+}
+
+.card h3 {
+  margin-top: 0;
+  text-align: center;
+}
+
+.card-img {
+  width: 95%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease; 
+  margin-bottom: 10px;
+ 
+}
+
+.card:hover .card-img {
+  transform: scale(1.03);
+}
+.card-p{
+  color:$accent-color-dark;
+  font-size: 0.9rem;
+  text-indent: 0;
+  padding-top: 5px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+@media (min-width: $breakpoint-mobile) {
+  .card h3 {
+    text-transform: uppercase; 
+  }
+  .card-p{
+        font-size: 1rem;
+            }
+}

@@ -1,0 +1,146 @@
+.logo-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  background-color: white;
+  border: $borderfortest;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 5px 2px 5px 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+ 
+  #langv {
+    grid-row: 1;
+  }
+  #logo {
+    grid-row: 2; 
+  }
+}
+.logo {
+  width: 250px;
+}
+
+.logo-cell {
+  grid-row: span 2;
+  align-items: center;
+}
+.adress-cell,
+.langv-cell {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  border: $borderfortest;
+}
+.adress-cell{
+  flex-direction: column;
+  background-color: $gray;
+  padding: 0 2%;
+}
+
+.adress-text {
+  color: white;
+  font-size: 0.8em;
+  font-family: $font-family-base;
+  text-align: right;
+}
+.adress-phone{
+  text-decoration: none;
+  color: inherit;
+}
+.adress-phone:hover {
+  text-decoration: underline;
+}
+
+.langv {
+  display: flex;
+  padding: 4px 10px;
+  border: $borderfortest;
+}
+
+.langv-btn {
+  font-size: 0.7em;
+  padding: 0px 5px;
+  margin-left: 5px;
+  background-color: #c7e6a3; 
+  color: #4a4a4a; 
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 30px;
+  transition: background-color 0.3s ease; 
+}
+
+.langv-btn:hover {
+  background-color: #a4c639;
+}
+
+.icon {
+  color: white;
+  background-color: $secondary-color;
+  font-size: 1.2rem;
+  margin: 0.4%;
+  padding: 4px;
+  border-radius: 5px;
+}
+
+@media (min-width: $breakpoint-mobile) {
+  .logo-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    background-color: white;
+    border: $borderfortest;
+    justify-content: space-between;
+    align-items: flex-end; /*at bottom*/
+    padding: 10px 30px 5px 50px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    #langv {
+      grid-row: 1;
+    }
+    #logo {
+      grid-row: 1; 
+    }
+  }
+  .langv-btn {
+    font-size: 0.8em;
+    padding: 2px 6px;
+    margin-left: 10px;
+  }
+  .logo {
+    width: 350px;
+  }
+  .adress-cell{
+    flex-direction: row;
+    
+  }
+  .adress-text {
+    font-size: 0.9em;
+     }
+}
+
+@media (min-width: $breakpoint-tablet) {
+  .logo-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+    background-color: white;
+    border: $borderfortest;
+    justify-content: space-between;
+    align-items: flex-end; 
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+   
+  }
+  .langv-btn {
+    font-size: 0.8em;
+    padding: 2px 6px; 
+    margin-left: 10px; 
+   
+  }
+  .logo {
+    width: 400px;
+  }
+  .adress-text {
+    font-size: 1em;
+     }
+
+}

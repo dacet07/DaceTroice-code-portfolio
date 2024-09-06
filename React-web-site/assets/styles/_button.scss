@@ -1,0 +1,62 @@
+.button-apply,
+.button-send {
+  display: block; 
+  margin: 10px auto 20px;
+  width: 170px;
+  height: 38px;
+  border: 1px solid rgb(169, 169, 169);
+  border-radius: 10px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: $secondary-color;
+  color: white;
+  white-space: nowrap;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2),
+    /* Outer shadow */ inset 4px 4px 6px rgba(255, 255, 255, 0.2),
+    inset -4px -4px 6px rgba(48, 48, 48, 0.3); /* Inner shadow */
+}
+
+.button-close {
+  width: 25px;
+  height: 25px;
+  border: 1px solid rgb(169, 169, 169);
+  margin: 0 0 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: white;
+  color: $secondary-color;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  float: right;
+  padding: 0;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  
+}
+
+@media (min-width: $breakpoint-mobile){
+  .button-apply {
+    display: block; 
+    margin: 10px 0 20px 10%;
+    
+  }
+
+  .button-send{
+    display: block; 
+    margin: 10px auto 20px;
+  }
+
+  .button-close {
+    width: 33px;
+    height: 33px;
+    margin: 0;
+    float: right;
+    font-size: 1.2rem;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);   
+  }
+}
+
+

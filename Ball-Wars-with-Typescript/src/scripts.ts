@@ -1,8 +1,3 @@
-import $ from "jquery";
-
-console.log("Body jQuery node:", $("body"));
-console.log("Body javascript node:", document.querySelector("body"));
-
 let canvas = document.getElementById("pongCanvas") as HTMLCanvasElement; //find canvas element
 let context = canvas.getContext("2d"); //create drawing object
 

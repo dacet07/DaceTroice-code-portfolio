@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Dace Troice">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="icon" href="/favicon.png" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <title>Rick and Morty characters</title>
+    <script type="module" crossorigin src="./assets/index-JJT9z_85.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Bym-fzN9.css">
+  </head>
+  <body>
+    <header>
+      <h1>
+        Rick and Morty characters
+      </h1>
+      <nav class="nav">
+        <div class="dropdown">
+          <button class="nav__button nav__button--dropdown">Sort</button>
+          <div class="dropdown-content">
+            <p id="sortByName" class="nav__button__menu">by name</p>
+            <p id="sortByStatus" class="nav__button__menu">by status</p>
+            <p id="sortBySpecies" class="nav__button__menu">by species</p>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="nav__button nav__button--dropdown">Filter</button>
+          <div class="dropdown-content">
+            <p id="filterByName" class="nav__button__menu">by name</p>
+            <p id="filterByStatus" class="nav__button__menu">by status</p>
+            <p id="filterBySpecies" class="nav__button__menu">by species</p>
+          </div>
+        </div>
+        <input id="filterInput" class="nav__input" type="text" />
+        <button id="clearFilterBtn" class="nav__button">Clear filter</button>
+      </nav>
+      <div id="infoLine"></div>
+    </header>
+    <ul id="characterList"></ul>
+    <div class="nav">
+      <button id="beginButton" class="nav__button nav__button--small">
+        &lt;&lt;
+      </button>
+      <button id="prevButton" class="nav__button nav__button--small">
+        &lt;
+      </button>
+      <span id="pageNumber" class="nav__page">1</span>
+      <button id="nextButton" class="nav__button nav__button--small">
+        &gt;
+      </button>
+      <button id="endButton" class="nav__button nav__button--small">
+        &gt;&gt;
+      </button>
+    </div>
+    <footer>
+      <small>Rick and Morty characters 2024.g.</small>
+    </footer>
+
+
+  </body>
+</html>

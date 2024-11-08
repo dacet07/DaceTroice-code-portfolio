@@ -1,0 +1,17 @@
+{
+  "name": "template-pacman",
+  "scripts": {
+    "ts": "tsx",
+    "format": "npx prettier --write ."
+  },
+  "author": "dace",
+  "devDependencies": {
+    "@tsconfig/node18": "^2.0.1",
+    "@types/node": "^20.3.1",
+    "prettier": "2.8.8",
+    "tsx": "^3.12.7"
+  },
+  "dependencies": {
+    "keypress": "^0.2.1"
+  }
+}

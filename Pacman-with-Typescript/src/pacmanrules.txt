@@ -1,0 +1,9 @@
+
+Move Pac-Man with the arrow keys to navigate the maze.
+Eat all the dots and pellets to complete the level.
+Eating a Power Pellet turns ghosts G to g, and you can eat them for extra points.
+Avoid contact with ghosts when they are not g, as it will cost you a life.
+When you lose all your lives, the game is over.
+
+p key - pause/resume
+

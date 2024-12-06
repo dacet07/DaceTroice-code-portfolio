@@ -1,0 +1,70 @@
+.game-main {
+  background-color: #233340;
+  justify-content: center;
+}
+
+.game-h1 {
+  color: #d3ffce;
+  font-size: 1.8em;
+  font-family: "Caveat", sans-serif;
+  text-align: center;
+}
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#stateDisplay {
+  color: #d3ffce;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+canvas {
+  display: block;
+  margin: auto;
+  background-color: #7bd42d;
+}
+
+p {
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.game-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-button {
+  background-color: #586f82;
+  width: 130px;
+  height: 30px;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: #d3ffce;
+  margin: 10px;
+  border: 1px solid rgb(57, 70, 131);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+#infoButton {
+  height: 23px;
+  background-color: #354a5c;
+  font-size: 0.8em;
+  
+}
+.game-button:hover {
+  background-color: #45a049;
+}
+.game-button:disabled {
+  background-color: #354a5c; /* Darker green on hover */
+  color: #586f82;
+  cursor: default;
+}
